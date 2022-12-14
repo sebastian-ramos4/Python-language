@@ -1,0 +1,198 @@
+entrada_ecuacion = []
+proceso_ecuacion = []
+terminos = 0
+mostrar = 0
+#elemento == "+" or "-" or "*" or "/"
+
+while (True):
+    
+    if terminos % 2 == 0:
+        while True:
+            elemento = input("Ingrese el numero: ")
+            try:
+                elemento = float(elemento)
+                break
+            except:
+                if elemento == "finish":
+                    break
+                elif elemento == "back":
+                    if terminos == 0:
+                        print("No es posible realizar la accion")
+                    else:
+                        break
+                else:
+                    print("Entrada incorrecto")
+    else:   
+        while (True):
+            elemento = input("Ingrese el operador aritmetico: ")
+            if elemento == '+':
+                break
+            elif elemento == '-':
+                break
+            elif elemento == '/':
+                break
+            elif elemento == '*':
+                break
+            else:
+                if elemento == "finish":
+                    break
+                elif elemento == "back":
+                    break
+                else:
+                    print("Entrada incorrecto")
+    
+    if elemento == "finish":
+        if terminos % 2 == 0 and terminos > 0:
+            entrada_ecuacion.pop(terminos - 1)
+            print (entrada_ecuacion)
+            break
+        else:
+            break
+    elif elemento == "back":
+        entrada_ecuacion.pop(terminos - 1)
+        print(entrada_ecuacion)
+        terminos -= 1
+    else:
+        entrada_ecuacion.append(elemento)
+        terminos += 1
+        print(entrada_ecuacion)
+
+
+#num_1 = 0
+#num_2 = 0
+
+#ecuacion = [100, "+", 20, "*", 40, "/", 2, "-", 5]
+proceso_ecuacion = entrada_ecuacion
+
+while True:
+    try:
+        multiplicacion = proceso_ecuacion.index("*")
+        try:
+            division = proceso_ecuacion.index("/")
+            
+            if multiplicacion < division:
+                num_1 = proceso_ecuacion[multiplicacion - 1]
+                num_2 = proceso_ecuacion[multiplicacion + 1]
+                
+                resultado = num_1 * num_2
+                
+                proceso_ecuacion.pop(multiplicacion + 1)
+                proceso_ecuacion.pop(multiplicacion)
+                proceso_ecuacion.pop(multiplicacion - 1)
+                
+                proceso_ecuacion.insert(multiplicacion - 1, resultado)
+                print(proceso_ecuacion)
+                
+            else:
+                num_1 = proceso_ecuacion[division - 1]
+                num_2 = proceso_ecuacion[division + 1]
+                
+                resultado = num_1 / num_2
+                
+                
+                proceso_ecuacion.pop(division + 1)
+                proceso_ecuacion.pop(division)
+                proceso_ecuacion.pop(division - 1)
+                
+                proceso_ecuacion.insert(division - 1, resultado)
+                print(proceso_ecuacion)
+            
+        except:
+            num_1 = proceso_ecuacion[multiplicacion - 1]
+            num_2 = proceso_ecuacion[multiplicacion + 1]
+            
+            resultado = num_1 * num_2
+            
+            proceso_ecuacion.pop(multiplicacion + 1)
+            proceso_ecuacion.pop(multiplicacion)
+            proceso_ecuacion.pop(multiplicacion - 1)
+            
+            proceso_ecuacion.insert(multiplicacion - 1, resultado)
+            print(proceso_ecuacion)
+        
+    except:
+        try:
+            division = proceso_ecuacion.index("/")
+            
+            num_1 = proceso_ecuacion[division - 1]
+            num_2 = proceso_ecuacion[division + 1]
+            
+            resultado = num_1 / num_2
+            
+            
+            proceso_ecuacion.pop(division + 1)
+            proceso_ecuacion.pop(division)
+            proceso_ecuacion.pop(division - 1)
+            
+            proceso_ecuacion.insert(division - 1, resultado)
+            print(proceso_ecuacion)
+        except:
+            break
+
+            
+while True:
+    try:
+        suma = proceso_ecuacion.index("+")
+        try:
+            resta = proceso_ecuacion.index("-")
+            
+            if suma < resta:
+                num_1 = proceso_ecuacion[suma - 1]
+                num_2 = proceso_ecuacion[suma + 1]
+                
+                resultado = num_1 + num_2
+                
+                proceso_ecuacion.pop(suma + 1)
+                proceso_ecuacion.pop(suma)
+                proceso_ecuacion.pop(suma - 1)
+                
+                proceso_ecuacion.insert(suma - 1, resultado)
+                print(proceso_ecuacion)
+                
+            else:
+                num_1 = proceso_ecuacion[resta - 1]
+                num_2 = proceso_ecuacion[resta + 1]
+                
+                resultado = num_1 - num_2
+                
+                
+                proceso_ecuacion.pop(resta + 1)
+                proceso_ecuacion.pop(resta)
+                proceso_ecuacion.pop(resta - 1)
+                
+                proceso_ecuacion.insert(resta - 1, resultado)
+                print(proceso_ecuacion)
+            
+        except:
+            num_1 = proceso_ecuacion[suma - 1]
+            num_2 = proceso_ecuacion[suma + 1]
+            
+            resultado = num_1 + num_2
+            
+            proceso_ecuacion.pop(suma + 1)
+            proceso_ecuacion.pop(suma)
+            proceso_ecuacion.pop(suma - 1)
+            
+            proceso_ecuacion.insert(suma - 1, resultado)
+            print(proceso_ecuacion)
+        
+    except:
+        try:
+            resta = proceso_ecuacion.index("-")
+            
+            num_1 = proceso_ecuacion[resta - 1]
+            num_2 = proceso_ecuacion[resta + 1]
+            
+            resultado = num_1 - num_2
+            
+            
+            proceso_ecuacion.pop(resta + 1)
+            proceso_ecuacion.pop(resta)
+            proceso_ecuacion.pop(resta - 1)
+            
+            proceso_ecuacion.insert(resta - 1, resultado)
+            print(proceso_ecuacion)
+        except:
+            break
+
+            
